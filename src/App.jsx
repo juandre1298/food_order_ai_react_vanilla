@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ChatbotIcon from "./components/Chatboticon";
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+const App = () => {
+  return <div className="container">
+    <div className="chatbot-popup">
+      <div className="chat-header">
+        {/* chatbot header */}
+        <div className="header-info">
+          < ChatbotIcon />
+          <h2 className="logo-text">
+            chatbot
+          </h2>
+        </div>
+        <button className="material-symbols-rounded">
+            keyboard_arrow_down
+          </button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      {/* chatbot body  */}
+      <div className="chat-body">
+          <div className="message bot-message">
+            <ChatbotIcon />
+            <p className="message-text">
+              Hey there
+              <br />
+              how can I help you today?
+            </p>
+          </div>
+          <div className="message user-message">
+            <p className="message-text">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores doloribus rem natus, optio harum minus at? Eaque, esse sed! Est aspernatur magni ut dolorum praesentium adipisci tempore corporis enim nisi!
+            </p>
+          </div>
+        </div>
+        {/* chatbot footer */}
+        <div className="chat-footer">
+            <form action="#" className="chat-form">
+                <input type="text" placeholder="Message..." className="message-input" required />
+                <button className="material-symbols-rounded">
+                  arrow_upward
+                </button>
+            </form>
+        </div>
+    </div>
+    </div>
 }
 
-export default App
+export default App;
