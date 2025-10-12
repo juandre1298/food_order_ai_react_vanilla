@@ -1,14 +1,46 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ChatbotIcon from "./components/Chatboticon";
 import ChatForm from "./components/ChatForm";
 import ChatMessage from "./components/ChatMessage";
 
 const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
+  const chatBodyRef = useRef(); 
+  const generateBotResponse = async (history) =>{
 
-  const generateBotResponse = (history) =>{
-    console.log(history)
+
+    const updateHistyory = (text) => {
+      setChatHistory(prev => [...prev.filter(msg=> msg.text !== 'thinking...'),  {role: "model", text: text}])
+    }
+    history = history.map(({role, text}) => ({role, parts:[{text}]}));
+    
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY
+
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-type" : "application/json",
+        "x-goog-api-key" : apiKey
+      },
+      body: JSON.stringify({contents: history})
+    }
+
+    try{
+      const response = await fetch(url,requestOptions);
+      const data = await response.json();
+      if(!response.ok) throw new Error(data.error.message || "Something went wrong!");
+      const apiResponse = data.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, "$1").trim();
+      updateHistyory(apiResponse)
+    }catch(error){
+      console.error(error)
+    }
   }
+  useEffect(()=>{
+    console.log('scroll')
+    chatBodyRef.current.scrollTo({top: chatBodyRef.current.scrollHeight, behaviour: "smooth"});
+  },[chatHistory])
 
   return <div className="container">
     <div className="chatbot-popup">
@@ -25,7 +57,7 @@ const App = () => {
           </button>
       </div>
       {/* chatbot body  */}
-      <div className="chat-body">
+      <div className="chat-body" ref={chatBodyRef}>
           <div className="message bot-message">
             <ChatbotIcon />
             <p className="message-text">
