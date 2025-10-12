@@ -5,6 +5,7 @@ import ChatMessage from "./components/ChatMessage";
 
 const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
+  const [showChatbot, setShowChatbot] = useState(false);
   const chatBodyRef = useRef(); 
   const generateBotResponse = async (history) =>{
 
@@ -38,11 +39,14 @@ const App = () => {
     }
   }
   useEffect(()=>{
-    console.log('scroll')
     chatBodyRef.current.scrollTo({top: chatBodyRef.current.scrollHeight, behaviour: "smooth"});
   },[chatHistory])
 
-  return <div className="container">
+  return <div className={`container ${showChatbot ? 'show-chatbox' : ''}`}>
+    <button onClick={()=>setShowChatbot(prev=>!prev)} id="chatbot-toggler">
+      <span className="material-symbols-rounded open">support_agent</span>
+      <span className="material-symbols-rounded close">close</span>
+    </button>
     <div className="chatbot-popup">
       <div className="chat-header">
         {/* chatbot header */}
@@ -52,7 +56,7 @@ const App = () => {
             chatbot
           </h2>
         </div>
-        <button className="material-symbols-rounded">
+        <button onClick={()=>setShowChatbot(prev=>!prev)} className="material-symbols-rounded">
             keyboard_arrow_down
           </button>
       </div>
