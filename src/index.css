@@ -249,6 +249,9 @@ body{
     width: 100%;
     border-radius: 0
   }
+  .chat-body {
+    height: 100%;
+  }
   #chatbot-toggler{
     right: 12px;
   }

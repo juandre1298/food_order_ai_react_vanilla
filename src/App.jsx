@@ -2,13 +2,13 @@ import { useState, useEffect, useRef } from "react";
 import ChatbotIcon from "./components/Chatboticon";
 import ChatForm from "./components/ChatForm";
 import ChatMessage from "./components/ChatMessage";
+import { companyInfo } from "./components/companyInfo";
 
 const App = () => {
-  const [chatHistory, setChatHistory] = useState([]);
-  const [showChatbot, setShowChatbot] = useState(false);
+  const [chatHistory, setChatHistory] = useState([{role: "model", text: JSON.stringify(companyInfo) , isError: false, hideMessage: true}]);
+  const [showChatbot, setShowChatbot] = useState(true);
   const chatBodyRef = useRef(); 
   const generateBotResponse = async (history) =>{
-
 
     const updateHistyory = (text, isError = false) => {
       setChatHistory(prev => [...prev.filter(msg=> msg.text !== 'thinking...'),  {role: "model", text, isError}])
