@@ -1,3 +1,5 @@
+import { menu } from "./menu";
+
 export const companyInfo = {
   name: "McDonald's Automac AI",
   description: `
@@ -42,14 +44,8 @@ export const companyInfo = {
     }
   ],
   
-  menuHighlights: [
-    { item: "Big Mac", price: 4.75, currency: "USD", description: "The iconic double-layer burger with special sauce." },
-    { item: "McPollo", price: 4.25, currency: "USD", description: "Crispy chicken sandwich with lettuce and mayo." },
-    { item: "Papas Medianas", price: 1.75, currency: "USD", description: "Golden, crispy fries cooked to perfection." },
-    { item: "McFlurry Oreo", price: 2.25, currency: "USD", description: "Creamy vanilla ice cream blended with Oreo pieces." }
-  ],
+  menu: menu,
   
-
   faqs: [
     {
       q: "What are your opening hours?",
@@ -86,5 +82,6 @@ export const companyInfo = {
     "🥤 Hmm, that item’s not on our menu. Want to check the full list?",
     "🍔 I’m having trouble connecting right now. Let’s try again in a moment."
   ]
+  
 };
 
