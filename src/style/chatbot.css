@@ -106,7 +106,7 @@
   border-radius: 50%;
   margin-right: -10px;
   background-color: transparent;
-  transition: 0.2 ease;
+  transition: 0.2s ease;
 }
 
 .chat-header button:hover{

@@ -54,7 +54,7 @@ const Chatbot = () => {
         <span className="material-symbols-rounded close">close</span>
       </button>
       <div className="chatbot-popup">
-        <div className="chat-header">
+        <div className="chat-header" onClick={()=>setShowChatbot(prev=>!prev)}>
           {/* chatbot header */}
           <div className="header-info">
             < ChatbotIcon />
@@ -62,7 +62,7 @@ const Chatbot = () => {
               chatbot
             </h2>
           </div>
-          <button onClick={()=>setShowChatbot(prev=>!prev)} className="material-symbols-rounded">
+          <button className="material-symbols-rounded">
               keyboard_arrow_down
             </button>
         </div>
