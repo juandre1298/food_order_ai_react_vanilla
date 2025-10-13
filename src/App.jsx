@@ -10,8 +10,8 @@ const App = () => {
   const generateBotResponse = async (history) =>{
 
 
-    const updateHistyory = (text) => {
-      setChatHistory(prev => [...prev.filter(msg=> msg.text !== 'thinking...'),  {role: "model", text: text}])
+    const updateHistyory = (text, isError = false) => {
+      setChatHistory(prev => [...prev.filter(msg=> msg.text !== 'thinking...'),  {role: "model", text, isError}])
     }
     history = history.map(({role, text}) => ({role, parts:[{text}]}));
     
@@ -36,6 +36,7 @@ const App = () => {
       updateHistyory(apiResponse)
     }catch(error){
       console.error(error)
+      updateHistyory(error.message, true)
     }
   }
   useEffect(()=>{
