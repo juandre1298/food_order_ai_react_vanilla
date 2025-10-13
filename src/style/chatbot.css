@@ -1,18 +1,3 @@
-/* import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-}
-
-body{
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(#F4F0FF, #DACDFF);
-}
 
 #chatbot-toggler{
   position: fixed;
@@ -59,21 +44,21 @@ body{
   transition: all 0.2s ease;
 }
 
-.container.show-chatbox .chatbot-popup{
+.chatbot-container.show-chatbox .chatbot-popup{
   opacity: 1;
   transform: scale(1);
   pointer-events: auto;
 }
 
-.container.show-chatbox #chatbot-toggler{
+.chatbot-container.show-chatbox #chatbot-toggler{
   transform: rotate(90deg);
 }
 
-.container.show-chatbox #chatbot-toggler span.open{
+.chatbot-container.show-chatbox #chatbot-toggler span.open{
   opacity: 0; 
 }
 
-.container.show-chatbox #chatbot-toggler span.close{
+.chatbot-container.show-chatbox #chatbot-toggler span.close{
   opacity: 1;
 }
 
