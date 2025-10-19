@@ -1,7 +1,6 @@
 import { systemPrompt } from "./systemPrompt";
 
 const generateBotResponse = async (history) => {
-  console.log(history)
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
   const systemInstruction = { role: "user", parts: [{ text: systemPrompt }] };

@@ -1,7 +1,4 @@
-const sanetizeAiAnswer = (rawText) => {
-  console.log('sanetizing rawtext')
-  console.log(rawText)
-  
+const sanetizeAiAnswer = (rawText) => {  
   if (!rawText || typeof rawText !== "string") {
     return { intent: null, message: "Invalid AI response." };
   }
